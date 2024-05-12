@@ -23,9 +23,14 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
+	<dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-core</artifactId>
+		<version>2.16.0</version>
+	</dependency>
   </dependencies>
 
   <build>
@@ -70,19 +75,24 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <plugin>
+          <groupId>org.owasp</groupId>
+          <artifactId>dependency-check-maven</artifactId>
+          <version>9.1.0</version>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
 <distributionManagement>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>repository-for-snapshots</name>
-        <url>http://localhost/artifactory/libs-snapshot-local</url>
-    </snapshotRepository>
-	<repository>
+    <repository>
         <id>central</id>
-        <name>repository-for-releases</name>
-        <url>http://localhost/artifactory/libs-release-local</url>
+        <name>artifactory-server-releases</name>
+        <url>http://192.168.56.46:8081/artifactory/itsparks-libs-release-local</url>
     </repository>
+	<snapshotRepository>
+        <id>snapshots</id>
+        <name>artifactory-server-snapshots</name>
+    <url>http://192.168.56.46:8081/artifactory/itsparks-libs-snapshot-local</url>
+    </snapshotRepository>
 </distributionManagement>
 </project>
